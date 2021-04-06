@@ -22,7 +22,8 @@ class KittensController < ActionController::Base
 
     def update
         @kitten = Kitten.find(params[:id])
-        # Need to add further code
+        @kitten.update(name: params[:name], age: params[:age], cuteness: params[:cuteness], softness: params[:softness])
+        redirect_to kitten_path(@kitten)
     end
 
     private
