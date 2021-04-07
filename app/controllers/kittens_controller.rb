@@ -9,7 +9,13 @@ class KittensController < ActionController::Base
 
     def create
         @kitten = Kitten.new(kitten_params)
-        # Need to add further code
+        respond_to do |format|
+            if @kitten.save
+                format.html { redirect_to @kitten, notice: "You created a new kitten!" }
+            else
+                format.html { render :new }
+            end
+        end
     end
 
     def show
