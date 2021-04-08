@@ -32,6 +32,14 @@ class KittensController < ActionController::Base
         redirect_to kitten_path(@kitten)
     end
 
+    def destroy
+        @kitten = Kitten.find(params[:id])
+        @kitten.destroy
+        respond_to do |format|
+            format.html { redirect_to root_path, notice: "Kitten successfully deleted." }
+        end
+    end
+
     private
 
     def kitten_params

@@ -1,11 +1,14 @@
-<p>Name:</p>
-<%= @kitten.name %>
+<h2><%= @kitten.name %></h2>
 
-<p>Cuteness:</p>
+<b><p>Cuteness:</p></b>
 <%= @kitten.cuteness %>
 
-<p>Age:</p>
+<b><p>Age:</p></b>
 <%= @kitten.age %>
 
-<p>Softness:</p>
-<%= @kitten.softness %>
+<b><p>Softness:</p></b>
+<%= @kitten.softness %></br></br>
+
+<%= button_to "Delete", @kitten, :method => :delete %>
+
+<%= link_to "Edit", edit_kitten_url(@kitten) %>
