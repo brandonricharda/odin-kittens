@@ -9,4 +9,5 @@
     <b><p>Cuteness:</p></b>
     <p><%= kitten.cuteness %></p>
     <%= button_to "Delete", kitten, :method => :delete %>
+    <%= link_to "Edit", edit_kitten_url(kitten) %>
 <% end %>

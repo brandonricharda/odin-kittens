@@ -13,7 +13,7 @@ class KittensController < ActionController::Base
             if @kitten.save
                 format.html { redirect_to @kitten, notice: "You created a new kitten!" }
             else
-                format.html { render :new }
+                format.html { render :new, notice: "You messed up! Try again." }
             end
         end
     end
@@ -28,8 +28,8 @@ class KittensController < ActionController::Base
 
     def update
         @kitten = Kitten.find(params[:id])
-        @kitten.update(name: params[:name], age: params[:age], cuteness: params[:cuteness], softness: params[:softness])
-        redirect_to kitten_path(@kitten)
+        @kitten.update(name: params[:kitten][:name], age: params[:kitten][:age], cuteness: params[:kitten][:cuteness], softness: params[:kitten][:softness])
+        redirect_to @kitten
     end
 
     def destroy
