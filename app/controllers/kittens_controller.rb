@@ -1,6 +1,10 @@
 class KittensController < ActionController::Base
     def index
         @kittens = Kitten.all 
+        respond_to do |format|
+            format.html
+            format.json { render :json => @kittens }
+        end
     end
 
     def new
@@ -20,6 +24,10 @@ class KittensController < ActionController::Base
 
     def show
         @kitten = Kitten.find(params[:id])
+        respond_to do |format|
+            format.html
+            format.json { render :json => @kitten }
+        end
     end
 
     def edit
@@ -29,7 +37,7 @@ class KittensController < ActionController::Base
     def update
         @kitten = Kitten.find(params[:id])
         @kitten.update(name: params[:kitten][:name], age: params[:kitten][:age], cuteness: params[:kitten][:cuteness], softness: params[:kitten][:softness])
-        redirect_to @kitten
+        redirect_to @kitten, notice: "Kitten successfully updated."
     end
 
     def destroy
